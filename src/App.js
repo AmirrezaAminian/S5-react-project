@@ -1,3 +1,4 @@
+import { logDOM } from '@testing-library/react';
 import ExpenseItem from  './components/Expenses/ExpenseItem'
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpenses/NewExpense';
@@ -25,9 +26,14 @@ function App() {
     },
   ];
 
+
+  const addExpenseHandler = (asas) => {
+    console.log(asas);
+  }
+
   return (
     <div>
-      <NewExpense></NewExpense>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
