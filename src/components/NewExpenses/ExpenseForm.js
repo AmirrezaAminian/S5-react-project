@@ -5,52 +5,52 @@ import "./ExpenseForm.css";
 
 
 const ExpenseForm = (props) => {
+
+
+   const [enteredTitle, setEnteredTitle] = useState("");
+   const [enteredAmount, setEnteredAmount] = useState("");
+   const [enteredDate, setEnteredDate] = useState("");
+
+
+    const titleChangeHandler = function(e){
+      setEnteredTitle(e.target.value)
+    }
+    const amountChangeHandler = function (e) {
+      setEnteredAmount(e.target.value);
+
+    };
+    const dateChangeHandler = function (e) {
+      setEnteredDate(e.target.value);
+
+    };
      
-    const [enteredTitle , setEnteredTitle] = useState('')
-     const [enteredAmount, setEnteredAmount] = useState("");
-     const [enteredDate, setEnteredDate] = useState("");
 
-    const titleChangeHandler = (event) => {
+    const submitHandler = function(e){
+       e.preventDefault() ;
 
-        setEnteredTitle(event.target.value)
-    }
+       const expenseData = {
+        title : enteredTitle ,
+        amount :  enteredAmount,
+        date : new Date(enteredDate)
+       }
+      
+       props.onSaveExpenseData(expenseData) ;
 
-    const amountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value);
-       
-
-    }
-
-    const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
-        
-    }
-
-
-    const SubmitHandler = (e) => {
-        e.preventDefault();
-
-        const expenseData = {
-            title : enteredTitle,
-            amount : enteredAmount,
-            date : new Date(enteredDate) ,
-        }
-
-      props.onSaveExpenseData(expenseData) ;
+         
     }
     
 
-
       return (
-        <form onSubmit={SubmitHandler}>
+        <form onSubmit={submitHandler}>
           <div className="new-expense__controls">
             <div className="new-expense__control">
               <label>Title</label>
-              <input className="as" type="text" onChange={titleChangeHandler} />
+              <input type="text" onChange={titleChangeHandler} />
             </div>
             <div className="new-expense__control">
               <label>Amount</label>
               <input
+               
                 type="number"
                 min="0.01"
                 step="0.01"
