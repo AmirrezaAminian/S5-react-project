@@ -6,15 +6,14 @@ import "./NewExpense.css";
 
 const NewExpense = (props) => {
 
-    const saveExpenseDataHandler = function (enteredExpenseData) {
-      const expenseData = {
-        ...enteredExpenseData ,
-        id : Math.random() + '' ,
-      }
 
-      props.onAddExpense(expenseData)
-    };
-
+  const saveExpenseDataHandler = function(enteredExpenseData){
+     const expenseDate = {
+      ...enteredExpenseData , 
+      id : Math.random() + ''
+     }
+     props.onAddExpense(expenseDate)
+  }
     
 
     return (
