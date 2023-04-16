@@ -1,5 +1,3 @@
-import { logDOM } from '@testing-library/react';
-// import ExpenseItem from  './components/Expenses/ExpenseItem'
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpenses/NewExpense';
 import { useState } from 'react';
